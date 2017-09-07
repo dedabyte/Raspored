@@ -1,0 +1,110 @@
+$color--main: #f80;
+
+@font-face {
+  font-family: fontRegular;
+  src: url(RobotoCondensed-Regular.ttf);
+}
+@font-face {
+  font-family: fontBold;
+  src: url(RobotoCondensed-Bold.ttf);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  font-family: fontRegular, sans-serif;
+  font-size: 13px;
+}
+b {
+  font-family: fontBold;
+}
+
+.period {
+  position: relative;
+
+  &.class {
+    height: 56px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background-color: #f7f7f7;
+  }
+
+  .class-data {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40px;
+
+    .time, .index {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777;
+    }
+
+    .time {
+      font-size: 12px;
+    }
+
+    .index {
+      font-size: 14px;
+    }
+
+  }
+
+  &.break {
+    height: 10px;
+  }
+
+  &.bigbreak {
+    height: 20px;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 40px;
+  width: 100%;
+  display: flex;
+
+  .column {
+    flex: 1;
+
+    .class {
+      height: 56px;
+      margin: 0 8px 10px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid transparent;
+      border-radius: 4px;
+
+      &.full {
+        //border-color: $color--main;
+        //background-color: transparentize($color--main, 0.2);
+        border-color: #444;
+        background-color: transparentize(#444, 0.2);
+      }
+
+      &.bigbreak {
+        margin-bottom: 20px;
+      }
+
+      .group, .room {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
+  }
+}

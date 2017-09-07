@@ -1,0 +1,78 @@
+@font-face {
+  font-family: fontRegular;
+  src: url(RobotoCondensed-Regular.ttf); }
+@font-face {
+  font-family: fontBold;
+  src: url(RobotoCondensed-Bold.ttf); }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+html,
+body {
+  height: 100%;
+  font-family: fontRegular, sans-serif;
+  font-size: 13px; }
+
+b {
+  font-family: fontBold; }
+
+.period {
+  position: relative; }
+  .period.class {
+    height: 56px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    background-color: #f7f7f7; }
+  .period .class-data {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 40px; }
+    .period .class-data .time, .period .class-data .index {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #777; }
+    .period .class-data .time {
+      font-size: 12px; }
+    .period .class-data .index {
+      font-size: 14px; }
+  .period.break {
+    height: 10px; }
+  .period.bigbreak {
+    height: 20px; }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 40px;
+  width: 100%;
+  display: flex; }
+  .overlay .column {
+    flex: 1; }
+    .overlay .column .class {
+      height: 56px;
+      margin: 0 8px 10px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid transparent;
+      border-radius: 4px; }
+      .overlay .column .class.full {
+        border-color: #444;
+        background-color: rgba(68, 68, 68, 0.8); }
+      .overlay .column .class.bigbreak {
+        margin-bottom: 20px; }
+      .overlay .column .class .group, .overlay .column .class .room {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 15px; }
+
+/*# sourceMappingURL=style.css.map */
