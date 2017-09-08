@@ -1,4 +1,11 @@
-$color--main: #f80;
+$color--main: #009688;
+$color--main-700: #00796B;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @font-face {
   font-family: fontRegular;
@@ -23,6 +30,24 @@ b {
   font-family: fontBold;
 }
 
+.header {
+  height: 56px;
+  background-color: $color--main;
+  color: white;
+  padding: 0 16px;
+  margin-bottom: 10px;
+  display: flex;
+
+  .title {
+    font-weight: bold;
+    font-size: 22px;
+    display: flex;
+    flex: 1;
+    justify-content: left;
+    align-items: center;
+  }
+}
+
 .period {
   position: relative;
 
@@ -35,11 +60,11 @@ b {
 
   .class-data {
     display: flex;
-    flex-direction: column;
+    //flex-direction: column;
     height: 100%;
-    width: 40px;
+    width: 56px;
 
-    .time, .index {
+    .xxx {
       flex: 1;
       display: flex;
       justify-content: center;
@@ -47,12 +72,22 @@ b {
       color: #777;
     }
 
-    .time {
-      font-size: 12px;
+    .class-number {
+      width: 22px;
+      font-size: 18px;
+      @include flex-center;
     }
 
-    .index {
+    .class-times {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
       font-size: 14px;
+    }
+
+    .time {
+      flex: 1;
+      @include flex-center;
     }
 
   }
@@ -68,9 +103,9 @@ b {
 
 .overlay {
   position: absolute;
-  top: 0;
+  top: 66px;
   left: 0;
-  padding-left: 40px;
+  padding-left: 56px;
   width: 100%;
   display: flex;
 
@@ -79,7 +114,7 @@ b {
 
     .class {
       height: 56px;
-      margin: 0 8px 10px;
+      margin: 0 6px 10px;
       display: flex;
       flex-direction: column;
       border: 1px solid transparent;
@@ -88,8 +123,8 @@ b {
       &.full {
         //border-color: $color--main;
         //background-color: transparentize($color--main, 0.2);
-        border-color: #444;
-        background-color: transparentize(#444, 0.2);
+        border-color: #8e8e8e;
+        background-color: rgba(0, 0, 0, 0.13);
       }
 
       &.bigbreak {
@@ -98,13 +133,50 @@ b {
 
       .group, .room {
         flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
+        color: #444;
         font-weight: bold;
         font-size: 15px;
+        @include flex-center;
       }
+    }
+  }
+}
+
+.toggles {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  border-top: 1px solid #eee;
+  background-color: #f7f7f7;
+
+  .divider {
+    width: 1px;
+    background-color: #eee;
+  }
+
+  .toggle {
+    display: flex;
+    flex: 1;
+    text-transform: uppercase;
+    color: #444;
+
+    .icon {
+      width: 48px;
+      font-size: 22px;
+      @include flex-center;
+    }
+
+    .text {
+      flex: 1;
+      font-size: 16px;
+      @include flex-center;
+    }
+
+    &.active {
+      background-color: $color--main;
+      color: white;
     }
   }
 }

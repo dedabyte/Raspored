@@ -1,8 +1,8 @@
 (function(){
 
-  ras.service('ModelService', ModelService);
+  ras.service('Model', Model);
 
-  function ModelService(){
+  function Model(){
     var self = this;
 
     self.schedule = [
@@ -90,8 +90,53 @@
         7: {
           start: 1845, end: 1915
         }
+      },
+      short1: {
+        1: {
+          start: 800, end: 830
+        },
+        2: {
+          start: 835, end: 905
+        },
+        3: {
+          start: 910, end: 940
+        },
+        4: {
+          start: 950, end: 1020
+        },
+        5: {
+          start: 1025, end: 1055
+        },
+        6: {
+          start: 1100, end: 1130
+        },
+        7: {
+          start: 1135, end: 1205
+        }
+      },
+      short2: {
+        1: {
+          start: 1345, end: 1415
+        },
+        2: {
+          start: 1420, end: 1450
+        },
+        3: {
+          start: 1455, end: 1525
+        },
+        4: {
+          start: 1535, end: 1605
+        },
+        5: {
+          start: 1610, end: 1640
+        },
+        6: {
+          start: 1645, end: 1715
+        },
+        7: {
+          start: 1720, end: 1750
+        }
       }
-
     };
 
     self.periods = [
@@ -142,6 +187,17 @@
         index: 7
       }
     ];
+
+    function initPeriods(){
+      self.periods.forEach(function(period, index){
+        if(period.type === 'class') return;
+
+        period.start = self.periods[index - 1].end + 1;
+        period.end = self.periods[index + 1].end - 1;
+      });
+    }
+
+    initPeriods();
   }
 
 })();
