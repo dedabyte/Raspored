@@ -1,3 +1,5 @@
+$color--main-50: #E0F2F1;
+$color--main-100: #B2DFDB;
 $color--main: #009688;
 $color--main-700: #00796B;
 
@@ -99,15 +101,21 @@ b {
   &.bigbreak {
     height: 20px;
   }
+
+  &.active {
+    background-color: $color--main-50;
+    border-color: $color--main-50;
+  }
 }
 
 .overlay {
   position: absolute;
   top: 66px;
   left: 0;
-  padding-left: 56px;
+  padding-left: 60px;
   width: 100%;
   display: flex;
+  max-height: calc(7 * 56px + 5 * 10px + 20px);
 
   .column {
     flex: 1;
@@ -124,7 +132,7 @@ b {
         //border-color: $color--main;
         //background-color: transparentize($color--main, 0.2);
         border-color: #8e8e8e;
-        background-color: rgba(0, 0, 0, 0.13);
+        background-color: #dfdfdf;
       }
 
       &.bigbreak {
@@ -133,11 +141,33 @@ b {
 
       .group, .room {
         flex: 1;
-        color: #444;
+        color: #777;
         font-weight: bold;
         font-size: 15px;
         @include flex-center;
       }
+
+      .group {
+        &.e {
+          color: #c30;
+        }
+        &.m {
+          color: #333;
+        }
+        &.b {
+          color: $color--main;
+          flex: 56px;
+        }
+      }
+
+      &.active {
+        background-color: $color--main-100;
+        border-color: $color--main;
+      }
+    }
+
+    &.active {
+      background-color: $color--main-50;
     }
   }
 }

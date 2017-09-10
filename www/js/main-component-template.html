@@ -3,8 +3,9 @@
 </div>
 
 <div ng-repeat="period in $ctrl.model.periods"
-     class="period {{period.type}}">
-  <div class="class-data" ng-show="period.type === 'class'">
+     class="period {{period.type}}"
+     ng-class="{ active: period.active }">
+  <div class="class-data" ng-hide="period.type !== 'class'">
     <div class="class-number" ng-bind="period.index"></div>
     <div class="class-times">
       <div class="time start" ng-bind="$ctrl.getClassStartTime(period.index)"></div>
@@ -14,9 +15,9 @@
 </div>
 
 <div class="overlay">
-  <div ng-repeat="day in $ctrl.model.schedule" class="column">
-    <div ng-repeat="klass in day" class="class" ng-class="{ bigbreak: $index === 2, full: klass.group }">
-      <div class="group" ng-bind="klass.group"></div>
+  <div ng-repeat="day in $ctrl.model.schedule" class="column" ng-class="{ active: day.active }">
+    <div ng-repeat="klass in day" class="class" ng-class="{ bigbreak: $index === 2, full: klass.group, active: klass.active }">
+      <div class="group" ng-bind="klass.group" ng-class="klass.type"></div>
       <div class="room" ng-bind="klass.room"></div>
     </div>
   </div>

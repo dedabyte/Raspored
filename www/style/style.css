@@ -70,14 +70,18 @@ b {
     height: 10px; }
   .period.bigbreak {
     height: 20px; }
+  .period.active {
+    background-color: #E0F2F1;
+    border-color: #E0F2F1; }
 
 .overlay {
   position: absolute;
   top: 66px;
   left: 0;
-  padding-left: 56px;
+  padding-left: 60px;
   width: 100%;
-  display: flex; }
+  display: flex;
+  max-height: calc(7 * 56px + 5 * 10px + 20px); }
   .overlay .column {
     flex: 1; }
     .overlay .column .class {
@@ -89,17 +93,29 @@ b {
       border-radius: 4px; }
       .overlay .column .class.full {
         border-color: #8e8e8e;
-        background-color: rgba(0, 0, 0, 0.13); }
+        background-color: #dfdfdf; }
       .overlay .column .class.bigbreak {
         margin-bottom: 20px; }
       .overlay .column .class .group, .overlay .column .class .room {
         flex: 1;
-        color: #444;
+        color: #777;
         font-weight: bold;
         font-size: 15px;
         display: flex;
         justify-content: center;
         align-items: center; }
+      .overlay .column .class .group.e {
+        color: #c30; }
+      .overlay .column .class .group.m {
+        color: #333; }
+      .overlay .column .class .group.b {
+        color: #009688;
+        flex: 56px; }
+      .overlay .column .class.active {
+        background-color: #B2DFDB;
+        border-color: #009688; }
+    .overlay .column.active {
+      background-color: #E0F2F1; }
 
 .toggles {
   position: absolute;

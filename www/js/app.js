@@ -11,7 +11,7 @@ Number.prototype.toTime = function(){
   return hours + ':' + mins;
 };
 Date.prototype.getWeek = function(){
-  var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+  var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate() + 2, 12));
   var dayNum = d.getUTCDay() || 7;
   d.setUTCDate(d.getUTCDate() + 4 - dayNum);
   var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));

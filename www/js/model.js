@@ -7,40 +7,40 @@
 
     self.schedule = [
       [
-        { group: '32', room: '1' },
-        { group: '41', room: '1' },
+        { group: 'M23', room: '1' },
+        { group: 'M41', room: '11' }
+      ],
+      [
+        {},
+        {},
+        {},
+        { group: 'B', room: '' },
+        { group: 'M11', room: '7' },
+        { group: 'E11', room: '9' },
+        { group: 'E11', room: '9' }
+      ],
+      [
+        { group: 'M41', room: '11' },
+        { group: 'M41', room: '11' },
+        { group: 'M23', room: '10' }
       ],
       [
         {},
         {},
         {},
         {},
-        { group: '11', room: '1' },
-        { group: '11', room: '1' },
-        { group: '11', room: '1' },
+        { group: 'E41', room: '16' },
+        { group: 'M12', room: '5' },
+        { group: 'M12', room: '5' }
       ],
       [
-        { group: '41', room: '1' },
-        { group: '41', room: '1' },
-        { group: '23', room: '1' },
-      ],
-      [
+        { group: 'M11', room: '9' },
+        { group: 'M11', room: '9' },
+        { group: 'M12', room: '9' },
+        { group: 'E11', room: '2' },
         {},
-        {},
-        {},
-        {},
-        { group: '41', room: '1' },
-        { group: '12', room: '1' },
-        { group: '12', room: '1' },
-      ],
-      [
-        { group: '11', room: '1' },
-        { group: '11', room: '1' },
-        { group: '12', room: '1' },
-        { group: '11', room: '1' },
-        { group: '??', room: '1' },
-        { group: '41', room: '1' },
-        { group: '41', room: '1' },
+        { group: 'E41', room: '16' },
+        { group: 'E41', room: '16' }
       ]
     ];
 
@@ -145,42 +145,48 @@
         index: 1
       },
       {
-        type: 'break'
+        type: 'break',
+        index: 11
       },
       {
         type: 'class',
         index: 2
       },
       {
-        type: 'break'
+        type: 'break',
+        index: 22
       },
       {
         type: 'class',
         index: 3
       },
       {
-        type: 'bigbreak'
+        type: 'bigbreak',
+        index: 33
       },
       {
         type: 'class',
         index: 4
       },
       {
-        type: 'break'
+        type: 'break',
+        index: 44
       },
       {
         type: 'class',
         index: 5
       },
       {
-        type: 'break'
+        type: 'break',
+        index: 55
       },
       {
         type: 'class',
         index: 6
       },
       {
-        type: 'break'
+        type: 'break',
+        index: 66
       },
       {
         type: 'class',
@@ -188,16 +194,33 @@
       }
     ];
 
-    function initPeriods(){
-      self.periods.forEach(function(period, index){
-        if(period.type === 'class') return;
-
-        period.start = self.periods[index - 1].end + 1;
-        period.end = self.periods[index + 1].end - 1;
+    function initTimes(){
+      _.forEach(self.classTimes, function(lengthShift){
+        _.forEach(lengthShift, function(classTime, prop){
+          var index = parseInt(prop);
+          var nextClassTime = lengthShift[index + 1];
+          if(nextClassTime){
+            lengthShift[prop + '' + prop]  = {
+              start: classTime.end + 1,
+              end: nextClassTime.start - 1
+            };
+          }
+        });
       });
     }
 
-    initPeriods();
+    function initScheduleME(){
+      self.schedule.forEach(function(day){
+        day.forEach(function(klass){
+          if(klass.hasOwnProperty('group')){
+            klass.type = klass.group[0].toLowerCase();
+          }
+        });
+      });
+    }
+
+    initTimes();
+    initScheduleME();
   }
 
 })();
