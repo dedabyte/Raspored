@@ -91,6 +91,10 @@
         }
 
         _.forEach(day, function(klass, index){
+          // skip empty klasses
+          if(!klass.group){
+            return;
+          }
           var periodStart = getClassStart(index + 1);
           var periodEnd = getClassEnd(index + 1);
           if(day.active && timeInt >= periodStart && timeInt <= periodEnd){

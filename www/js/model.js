@@ -7,8 +7,9 @@
 
     self.schedule = [
       [
-        { group: 'M23', room: '1' },
-        { group: 'M41', room: '11' }
+        {},
+        { group: 'M41', room: '11' },
+        { group: 'M23', room: '10' }
       ],
       [
         {},
