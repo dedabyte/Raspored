@@ -29,7 +29,7 @@
     <div class="text" ng-bind="$ctrl.getShiftName()"></div>
   </div>
   <div class="divider"></div>
-  <div class="toggle" ng-tap="$ctrl.toggleLength()">
+  <div class="toggle" ng-tap="$ctrl.toggleLength()" ng-class="{ 'short-shift-highlight': $ctrl.length === 'short' }">
     <div class="icon fa fa-clock-o"></div>
     <div class="text" ng-bind="$ctrl.getLengthName()"></div>
   </div>

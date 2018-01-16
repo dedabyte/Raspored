@@ -145,6 +145,8 @@ b {
       display: flex;
       justify-content: center;
       align-items: center; }
+    .toggles .toggle.short-shift-highlight {
+      color: #009688; }
     .toggles .toggle.active {
       background-color: #009688;
       color: white; }
