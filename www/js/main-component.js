@@ -14,9 +14,9 @@
     function initModel(){
       var rest = new Date().getWeek() % 2;
       if(rest){
-        ctrl.shift = '1';
-      }else{
         ctrl.shift = '2';
+      }else{
+        ctrl.shift = '1';
       }
 
       ctrl.length = LsService.get('length') || 'normal';
