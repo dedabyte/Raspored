@@ -1,17 +1,20 @@
-import Model from './model';
-import LsService from './ls-service';
-import {IIntervalService} from 'angular';
+import LsService from "./ls-service";
+import {Index, IPeriodTypeModel, Model} from "./model";
+import {IIntervalService} from "angular";
 
 class rasMain {
   shift = '1';
   length = 'normal';
+  model: Model;
 
-  constructor(public model: Model,
+  constructor(private Model: Model,
               private LsService: LsService,
               private $interval: IIntervalService) {
+    this.model = Model;
+
     this.initModel();
     this.mark();
-    this.$interval(this.mark, 60000);
+    this.$interval(this.mark.bind(this), 60000);
   }
 
   private initModel() {
@@ -48,20 +51,20 @@ class rasMain {
     return this.length + this.shift;
   }
 
-  private getClassStart(index) {
+  private getClassStart(index: Index) {
     return this.model.classTimes[this.getLengthShift()][index].start;
   }
 
-  private getClassStartTime(index) {
+  private getClassStartTime(index: Index) {
     if (!index) return '';
     return this.getClassStart(index).toTime();
   }
 
-  getClassEnd(index) {
+  getClassEnd(index: Index) {
     return this.model.classTimes[this.getLengthShift()][index].end
   }
 
-  getClassEndTime(index) {
+  getClassEndTime(index: Index) {
     if (!index) return '';
     return this.getClassEnd(index).toTime();
   }
@@ -76,7 +79,7 @@ class rasMain {
     }
     let timeInt = this.timeToInt(date);
 
-    _.forEach(this.model.periods, (period) => {
+    _.forEach(this.model.periods, (period: IPeriodTypeModel) => {
       let periodStart = this.getClassStart(period.index);
       let periodEnd = this.getClassEnd(period.index);
       if (timeInt >= periodStart && timeInt <= periodEnd) {
@@ -116,8 +119,8 @@ class rasMain {
   }
 }
 
-let component = {
+let rasMainComponent = {
   templateUrl: 'js/main-component-template.html',
   controller: rasMain
 };
-export default component;
+export default rasMainComponent;

@@ -1,5 +1,7 @@
+import {IAttributes, IAugmentedJQuery, IScope} from "angular";
+
 export default function ngTap() {
-  return function (scope, element, attrs) {
+  return function (scope: IScope, element: IAugmentedJQuery, attrs: IAttributes) {
     let cancelEvent = false;
 
     element.on('touchstart', () => {

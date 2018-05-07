@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
-    "noLib": false,
     "removeComments": true,
     "target": "es5",
-    "module": "es2015",
+    "module": "amd",
     "allowJs": true,
     "sourceMap": true,
-    "outDir": "www/js/"
+    "outFile": "www/js/app.js"
   },
   "include": [
     "js/**/*"

@@ -9,7 +9,7 @@ export default class LsService {
    * @param {string} key
    * @param {object} value
    */
-  set(key, value) {
+  set(key: string, value: any) {
     localStorage.setItem(this.prefixKey(key), angular.toJson(value));
   }
 
@@ -18,7 +18,7 @@ export default class LsService {
    * @param {string} key
    * @returns {Object|Array|string|number|*}
    */
-  get(key) {
+  get(key: string) {
     let value = localStorage.getItem(this.prefixKey(key));
     if (value) {
       return angular.fromJson(value);
@@ -30,7 +30,7 @@ export default class LsService {
    * Remove value from local storage
    * @param {string} key
    */
-  remove(key) {
+  remove(key: string) {
     localStorage.removeItem(this.prefixKey(key));
   }
 
@@ -39,7 +39,7 @@ export default class LsService {
    * @param {string} key
    * @returns {string}
    */
-  prefixKey(key) {
+  prefixKey(key: string) {
     let prefixAndLink = this.keyPrefix + this.keyLink;
     if (key.indexOf(prefixAndLink) === 0) {
       return key;
