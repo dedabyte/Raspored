@@ -1,36 +1,65 @@
 <div class="header">
   <div class="title">Raspored</div>
+  <div class="tab" ng-class="{ selected: $ctrl.tab === 'schedule' }" ng-tap="$ctrl.tab = 'schedule'">
+    <i class="fa fa-calendar-o"></i>
+  </div>
+  <div class="tab" ng-class="{ selected: $ctrl.tab === 'grader' }" ng-tap="$ctrl.tab = 'grader'">
+    <i class="fa fa-html5"></i>
+  </div>
 </div>
 
-<div ng-repeat="period in $ctrl.model.periods"
-     class="period {{period.type}}"
-     ng-class="{ active: period.active }">
-  <div class="class-data" ng-hide="period.type !== 'class'">
-    <div class="class-number" ng-bind="period.index"></div>
-    <div class="class-times">
-      <div class="time start" ng-bind="$ctrl.getClassStartTime(period.index)"></div>
-      <div class="time end" ng-bind="$ctrl.getClassEndTime(period.index)"></div>
+<section class="section-schedule" ng-show="$ctrl.tab === 'schedule'">
+  <div ng-repeat="period in $ctrl.model.periods"
+       class="period {{period.type}}"
+       ng-class="{ active: period.active }">
+    <div class="class-data" ng-hide="period.type !== 'class'">
+      <div class="class-number" ng-bind="period.index"></div>
+      <div class="class-times">
+        <div class="time start" ng-bind="$ctrl.getClassStartTime(period.index)"></div>
+        <div class="time end" ng-bind="$ctrl.getClassEndTime(period.index)"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="overlay">
-  <div ng-repeat="day in $ctrl.model.schedule" class="column" ng-class="{ active: day.active }">
-    <div ng-repeat="klass in day" class="class" ng-class="{ bigbreak: $index === 2, full: klass.group, active: klass.active }">
-      <div class="group" ng-bind="klass.group" ng-class="klass.type"></div>
-      <div class="room" ng-bind="klass.room"></div>
+  <div class="overlay">
+    <div ng-repeat="day in $ctrl.model.schedule" class="column" ng-class="{ active: day.active }">
+      <div ng-repeat="klass in day" class="class" ng-class="{ bigbreak: $index === 2, full: klass.group, active: klass.active }">
+        <div class="group" ng-bind="klass.group" ng-class="klass.type"></div>
+        <div class="room" ng-bind="klass.room"></div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="toggles">
-  <div class="toggle" ng-tap="$ctrl.toggleShift()">
-    <div class="icon fa fa-calendar-o"></div>
-    <div class="text" ng-bind="$ctrl.getShiftName()"></div>
+  <div class="toggles">
+    <div class="toggle" ng-tap="$ctrl.toggleShift()">
+      <div class="icon fa fa-calendar-o"></div>
+      <div class="text" ng-bind="$ctrl.getShiftName()"></div>
+    </div>
+    <div class="divider"></div>
+    <div class="toggle" ng-tap="$ctrl.toggleLength()" ng-class="{ 'short-shift-highlight': $ctrl.length === 'short' }">
+      <div class="icon fa fa-clock-o"></div>
+      <div class="text" ng-bind="$ctrl.getLengthName()"></div>
+    </div>
   </div>
-  <div class="divider"></div>
-  <div class="toggle" ng-tap="$ctrl.toggleLength()" ng-class="{ 'short-shift-highlight': $ctrl.length === 'short' }">
-    <div class="icon fa fa-clock-o"></div>
-    <div class="text" ng-bind="$ctrl.getLengthName()"></div>
+</section>
+
+<section class="section-grader" ng-show="$ctrl.tab === 'grader'">
+  <div class="grades">
+    <div class="grade" ng-repeat="grade in $ctrl.grades track by $index" ng-tap="$ctrl.removeGrade($index)" ng-bind="grade"></div>
   </div>
-</div>
+  <div class="clear-grades" ng-tap="$ctrl.clearGrades()">
+    <i class="fa fa-trash-o"></i>
+  </div>
+  <div class="final-grade" ng-bind="$ctrl.calculateFinalGrade()"></div>
+  <div class="digits">
+    <div class="digit" ng-tap="$ctrl.addGrade(1)">1</div>
+    <div class="divider"></div>
+    <div class="digit" ng-tap="$ctrl.addGrade(2)">2</div>
+    <div class="divider"></div>
+    <div class="digit" ng-tap="$ctrl.addGrade(3)">3</div>
+    <div class="divider"></div>
+    <div class="digit" ng-tap="$ctrl.addGrade(4)">4</div>
+    <div class="divider"></div>
+    <div class="digit" ng-tap="$ctrl.addGrade(5)">5</div>
+  </div>
+</section>

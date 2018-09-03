@@ -23,7 +23,6 @@ b {
   background-color: #009688;
   color: white;
   padding: 0 16px;
-  margin-bottom: 10px;
   display: flex; }
   .header .title {
     font-weight: bold;
@@ -32,49 +31,69 @@ b {
     flex: 1;
     justify-content: left;
     align-items: center; }
+  .header .tab {
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: relative; }
+    .header .tab.selected {
+      background-color: rgba(255, 255, 255, 0.2); }
+      .header .tab.selected::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: white; }
 
-.period {
+section {
+  height: calc(100% - 56px);
+  padding-top: 10px; }
+
+.section-schedule .period {
   position: relative; }
-  .period.class {
+  .section-schedule .period.class {
     height: 56px;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     background-color: #f7f7f7; }
-  .period .class-data {
+  .section-schedule .period .class-data {
     display: flex;
     height: 100%;
     width: 56px; }
-    .period .class-data .xxx {
+    .section-schedule .period .class-data .xxx {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       color: #777; }
-    .period .class-data .class-number {
+    .section-schedule .period .class-data .class-number {
       width: 22px;
       font-size: 18px;
       display: flex;
       justify-content: center;
       align-items: center; }
-    .period .class-data .class-times {
+    .section-schedule .period .class-data .class-times {
       display: flex;
       flex: 1;
       flex-direction: column;
       font-size: 14px; }
-    .period .class-data .time {
+    .section-schedule .period .class-data .time {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center; }
-  .period.break {
+  .section-schedule .period.break {
     height: 10px; }
-  .period.bigbreak {
+  .section-schedule .period.bigbreak {
     height: 20px; }
-  .period.active {
+  .section-schedule .period.active {
     background-color: #E0F2F1;
     border-color: #E0F2F1; }
-
-.overlay {
+.section-schedule .overlay {
   position: absolute;
   top: 66px;
   left: 0;
@@ -82,21 +101,21 @@ b {
   width: 100%;
   display: flex;
   max-height: calc(7 * 56px + 5 * 10px + 20px); }
-  .overlay .column {
+  .section-schedule .overlay .column {
     flex: 1; }
-    .overlay .column .class {
+    .section-schedule .overlay .column .class {
       height: 56px;
       margin: 0 6px 10px;
       display: flex;
       flex-direction: column;
       border: 1px solid transparent;
       border-radius: 4px; }
-      .overlay .column .class.full {
+      .section-schedule .overlay .column .class.full {
         border-color: #8e8e8e;
         background-color: #dfdfdf; }
-      .overlay .column .class.bigbreak {
+      .section-schedule .overlay .column .class.bigbreak {
         margin-bottom: 20px; }
-      .overlay .column .class .group, .overlay .column .class .room {
+      .section-schedule .overlay .column .class .group, .section-schedule .overlay .column .class .room {
         flex: 1;
         color: #777;
         font-weight: bold;
@@ -104,20 +123,19 @@ b {
         display: flex;
         justify-content: center;
         align-items: center; }
-      .overlay .column .class .group.e {
+      .section-schedule .overlay .column .class .group.e {
         color: #c30; }
-      .overlay .column .class .group.m {
+      .section-schedule .overlay .column .class .group.m {
         color: #333; }
-      .overlay .column .class .group.b {
+      .section-schedule .overlay .column .class .group.b {
         color: #009688;
         flex: 56px; }
-      .overlay .column .class.active {
+      .section-schedule .overlay .column .class.active {
         background-color: #B2DFDB;
         border-color: #009688; }
-    .overlay .column.active {
+    .section-schedule .overlay .column.active {
       background-color: #E0F2F1; }
-
-.toggles {
+.section-schedule .toggles {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -125,30 +143,92 @@ b {
   display: flex;
   border-top: 1px solid #eee;
   background-color: #f7f7f7; }
-  .toggles .divider {
+  .section-schedule .toggles .divider {
     width: 1px;
     background-color: #eee; }
-  .toggles .toggle {
+  .section-schedule .toggles .toggle {
     display: flex;
     flex: 1;
     text-transform: uppercase;
     color: #444; }
-    .toggles .toggle .icon {
+    .section-schedule .toggles .toggle .icon {
       width: 48px;
       font-size: 22px;
       display: flex;
       justify-content: center;
       align-items: center; }
-    .toggles .toggle .text {
+    .section-schedule .toggles .toggle .text {
       flex: 1;
       font-size: 16px;
       display: flex;
       justify-content: center;
       align-items: center; }
-    .toggles .toggle.short-shift-highlight {
+    .section-schedule .toggles .toggle.short-shift-highlight {
       color: #009688; }
-    .toggles .toggle.active {
+    .section-schedule .toggles .toggle.active {
       background-color: #009688;
       color: white; }
+
+.section-grader {
+  display: flex;
+  flex-direction: column; }
+  .section-grader .grades {
+    flex: 1;
+    overflow: auto; }
+  .section-grader .grade {
+    font-size: 26px;
+    font-weight: bold;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    width: 56px;
+    height: 56px;
+    margin: 16px 0 0 16px;
+    border: 1px solid #eee;
+    background-color: #f7f7f7; }
+    .section-grader .grade.active {
+      background-color: red;
+      color: white; }
+  .section-grader .clear-grades {
+    height: 56px;
+    border-top: 1px solid #eee;
+    background-color: #f7f7f7;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px; }
+    .section-grader .clear-grades.active {
+      background-color: #009688;
+      color: white; }
+  .section-grader .final-grade {
+    height: 112px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 56px;
+    color: #666; }
+  .section-grader .digits {
+    height: 112px;
+    display: flex;
+    border-top: 1px solid #eee;
+    background-color: #f7f7f7;
+    color: #444; }
+    .section-grader .digits .divider {
+      width: 1px;
+      background-color: #eee; }
+    .section-grader .digits .digit {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      font-weight: bold; }
+      .section-grader .digits .digit.active {
+        background-color: #009688;
+        color: white; }
 
 /*# sourceMappingURL=style.css.map */

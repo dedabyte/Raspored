@@ -2,6 +2,7 @@ $color--main-50: #E0F2F1;
 $color--main-100: #B2DFDB;
 $color--main: #009688;
 $color--main-700: #00796B;
+$height--header: 56px;
 
 @mixin flex-center {
   display: flex;
@@ -33,11 +34,10 @@ b {
 }
 
 .header {
-  height: 56px;
+  height: $height--header;
   background-color: $color--main;
   color: white;
   padding: 0 16px;
-  margin-bottom: 10px;
   display: flex;
 
   .title {
@@ -48,169 +48,274 @@ b {
     justify-content: left;
     align-items: center;
   }
-}
 
-.period {
-  position: relative;
+  .tab {
+    width: $height--header;
+    @include flex-center();
+    font-size: 20px;
+    position: relative;
 
-  &.class {
-    height: 56px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    background-color: #f7f7f7;
-  }
+    &.selected {
+      background-color: rgba(255, 255, 255, 0.2);
 
-  .class-data {
-    display: flex;
-    //flex-direction: column;
-    height: 100%;
-    width: 56px;
-
-    .xxx {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #777;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: white;
+      }
     }
-
-    .class-number {
-      width: 22px;
-      font-size: 18px;
-      @include flex-center;
-    }
-
-    .class-times {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      font-size: 14px;
-    }
-
-    .time {
-      flex: 1;
-      @include flex-center;
-    }
-
-  }
-
-  &.break {
-    height: 10px;
-  }
-
-  &.bigbreak {
-    height: 20px;
-  }
-
-  &.active {
-    background-color: $color--main-50;
-    border-color: $color--main-50;
   }
 }
 
-.overlay {
-  position: absolute;
-  top: 66px;
-  left: 0;
-  padding-left: 60px;
-  width: 100%;
-  display: flex;
-  max-height: calc(7 * 56px + 5 * 10px + 20px);
+section {
+  height: calc(100% - #{$height--header});
+  padding-top: 10px;
+}
 
-  .column {
-    flex: 1;
+.section-schedule {
+  .period {
+    position: relative;
 
-    .class {
+    &.class {
       height: 56px;
-      margin: 0 6px 10px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      background-color: #f7f7f7;
+    }
+
+    .class-data {
       display: flex;
-      flex-direction: column;
-      border: 1px solid transparent;
-      border-radius: 4px;
+      //flex-direction: column;
+      height: 100%;
+      width: 56px;
 
-      &.full {
-        //border-color: $color--main;
-        //background-color: transparentize($color--main, 0.2);
-        border-color: #8e8e8e;
-        background-color: #dfdfdf;
-      }
-
-      &.bigbreak {
-        margin-bottom: 20px;
-      }
-
-      .group, .room {
+      .xxx {
         flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: #777;
-        font-weight: bold;
-        font-size: 15px;
+      }
+
+      .class-number {
+        width: 22px;
+        font-size: 18px;
         @include flex-center;
       }
 
-      .group {
-        &.e {
-          color: #c30;
-        }
-        &.m {
-          color: #333;
-        }
-        &.b {
-          color: $color--main;
-          flex: 56px;
-        }
+      .class-times {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        font-size: 14px;
       }
 
-      &.active {
-        background-color: $color--main-100;
-        border-color: $color--main;
+      .time {
+        flex: 1;
+        @include flex-center;
       }
+
+    }
+
+    &.break {
+      height: 10px;
+    }
+
+    &.bigbreak {
+      height: 20px;
     }
 
     &.active {
       background-color: $color--main-50;
+      border-color: $color--main-50;
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    top: 66px;
+    left: 0;
+    padding-left: 60px;
+    width: 100%;
+    display: flex;
+    max-height: calc(7 * 56px + 5 * 10px + 20px);
+
+    .column {
+      flex: 1;
+
+      .class {
+        height: 56px;
+        margin: 0 6px 10px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid transparent;
+        border-radius: 4px;
+
+        &.full {
+          //border-color: $color--main;
+          //background-color: transparentize($color--main, 0.2);
+          border-color: #8e8e8e;
+          background-color: #dfdfdf;
+        }
+
+        &.bigbreak {
+          margin-bottom: 20px;
+        }
+
+        .group, .room {
+          flex: 1;
+          color: #777;
+          font-weight: bold;
+          font-size: 15px;
+          @include flex-center;
+        }
+
+        .group {
+          &.e {
+            color: #c30;
+          }
+          &.m {
+            color: #333;
+          }
+          &.b {
+            color: $color--main;
+            flex: 56px;
+          }
+        }
+
+        &.active {
+          background-color: $color--main-100;
+          border-color: $color--main;
+        }
+      }
+
+      &.active {
+        background-color: $color--main-50;
+      }
+    }
+  }
+
+  .toggles {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    border-top: 1px solid #eee;
+    background-color: #f7f7f7;
+
+    .divider {
+      width: 1px;
+      background-color: #eee;
+    }
+
+    .toggle {
+      display: flex;
+      flex: 1;
+      text-transform: uppercase;
+      color: #444;
+
+      .icon {
+        width: 48px;
+        font-size: 22px;
+        @include flex-center;
+      }
+
+      .text {
+        flex: 1;
+        font-size: 16px;
+        @include flex-center;
+      }
+
+      &.short-shift-highlight {
+        color: $color--main;
+      }
+
+      &.active {
+        background-color: $color--main;
+        color: white;
+      }
     }
   }
 }
 
-.toggles {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 48px;
+.section-grader {
   display: flex;
-  border-top: 1px solid #eee;
-  background-color: #f7f7f7;
+  flex-direction: column;
 
-  .divider {
-    width: 1px;
-    background-color: #eee;
+  .grades {
+    flex: 1;
+    overflow: auto;
   }
 
-  .toggle {
+  .grade {
+    font-size: 26px;
+    font-weight: bold;
     display: flex;
-    flex: 1;
-    text-transform: uppercase;
+    @include flex-center();
+    float: left;
+    width: $height--header;
+    height: $height--header;
+    margin: 16px 0 0 16px;
+    border: 1px solid #eee;
+    background-color: #f7f7f7;
+
+    &.active {
+      background-color: red;
+      color: white;
+    }
+  }
+
+  .clear-grades {
+    height: $height--header;
+    border-top: 1px solid #eee;
+    background-color: #f7f7f7;
     color: #444;
-
-    .icon {
-      width: 48px;
-      font-size: 22px;
-      @include flex-center;
-    }
-
-    .text {
-      flex: 1;
-      font-size: 16px;
-      @include flex-center;
-    }
-
-    &.short-shift-highlight {
-      color: $color--main;
-    }
+    @include flex-center();
+    font-size: 22px;
 
     &.active {
       background-color: $color--main;
       color: white;
     }
   }
+
+  .final-grade {
+    height: 112px;
+    border-top: 1px solid #eee;
+    @include flex-center();
+    font-size: 56px;
+    //font-weight: bold;
+    color: #666;
+  }
+
+  .digits {
+    height: 112px;
+    display: flex;
+    border-top: 1px solid #eee;
+    background-color: #f7f7f7;
+    color: #444;
+
+    .divider {
+      width: 1px;
+      background-color: #eee;
+    }
+
+    .digit {
+      flex: 1;
+      @include flex-center();
+      font-size: 26px;
+      font-weight: bold;
+
+      &.active {
+        background-color: $color--main;
+        color: white;
+      }
+    }
+  }
 }
+

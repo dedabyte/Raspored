@@ -271,13 +271,20 @@ define("ls-service", ["require", "exports"], function (require, exports) {
 define("main-component", ["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var Tabs;
+    (function (Tabs) {
+        Tabs["schedule"] = "schedule";
+        Tabs["grader"] = "grader";
+    })(Tabs || (Tabs = {}));
     var rasMain = (function () {
         function rasMain(Model, LsService, $interval) {
             this.Model = Model;
             this.LsService = LsService;
             this.$interval = $interval;
+            this.tab = Tabs.schedule;
             this.shift = '1';
             this.length = 'normal';
+            this.grades = [];
             this.model = Model;
             this.initModel();
             this.mark();
@@ -372,6 +379,25 @@ define("main-component", ["require", "exports"], function (require, exports) {
             var h = date.getHours();
             var m = date.getMinutes();
             return h * 100 + m;
+        };
+        rasMain.prototype.addGrade = function (grade) {
+            this.grades.push(grade);
+        };
+        rasMain.prototype.removeGrade = function (index) {
+            this.grades.splice(index, 1);
+        };
+        rasMain.prototype.clearGrades = function () {
+            this.grades = [];
+        };
+        rasMain.prototype.calculateFinalGrade = function () {
+            if (!this.grades.length) {
+                return '';
+            }
+            var finalGrade = 0;
+            this.grades.forEach(function (grade) {
+                finalGrade += grade;
+            });
+            return (finalGrade / this.grades.length).toFixed(2);
         };
         return rasMain;
     }());

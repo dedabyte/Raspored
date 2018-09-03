@@ -1,11 +1,19 @@
-import LsService from "./ls-service";
-import {Index, IPeriodTypeModel, Model} from "./model";
-import {IIntervalService} from "angular";
+import LsService from './ls-service';
+import {Index, IPeriodTypeModel, Model} from './model';
+import {IIntervalService} from 'angular';
+
+enum Tabs {
+  schedule = 'schedule',
+  grader = 'grader',
+}
 
 class rasMain {
+  tab: Tabs = Tabs.schedule;
   shift = '1';
   length = 'normal';
   model: Model;
+
+  grades: number[] = [];
 
   constructor(private Model: Model,
               private LsService: LsService,
@@ -116,6 +124,32 @@ class rasMain {
     let h = date.getHours();
     let m = date.getMinutes();
     return h * 100 + m;
+  }
+
+  // Grader
+
+  addGrade(grade){
+    this.grades.push(grade);
+  }
+
+  removeGrade(index){
+    this.grades.splice(index, 1);
+  }
+
+  clearGrades(){
+    this.grades = [];
+  }
+
+  calculateFinalGrade() {
+    if (!this.grades.length) {
+      return '';
+    }
+
+    let finalGrade = 0;
+    this.grades.forEach((grade) => {
+      finalGrade += grade
+    });
+    return (finalGrade / this.grades.length).toFixed(2);
   }
 }
 
