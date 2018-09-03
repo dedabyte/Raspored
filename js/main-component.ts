@@ -140,7 +140,7 @@ class rasMain {
     this.grades = [];
   }
 
-  calculateFinalGrade() {
+  calculateFinalGrade(decimals) {
     if (!this.grades.length) {
       return '';
     }
@@ -149,7 +149,7 @@ class rasMain {
     this.grades.forEach((grade) => {
       finalGrade += grade
     });
-    return (finalGrade / this.grades.length).toFixed(2);
+    return (finalGrade / this.grades.length).toFixed(decimals);
   }
 }
 

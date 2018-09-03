@@ -389,7 +389,7 @@ define("main-component", ["require", "exports"], function (require, exports) {
         rasMain.prototype.clearGrades = function () {
             this.grades = [];
         };
-        rasMain.prototype.calculateFinalGrade = function () {
+        rasMain.prototype.calculateFinalGrade = function (decimals) {
             if (!this.grades.length) {
                 return '';
             }
@@ -397,7 +397,7 @@ define("main-component", ["require", "exports"], function (require, exports) {
             this.grades.forEach(function (grade) {
                 finalGrade += grade;
             });
-            return (finalGrade / this.grades.length).toFixed(2);
+            return (finalGrade / this.grades.length).toFixed(decimals);
         };
         return rasMain;
     }());

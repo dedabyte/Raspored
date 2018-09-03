@@ -176,6 +176,7 @@ section {
     flex: 1;
     overflow: auto; }
   .section-grader .grade {
+    color: #444;
     font-size: 26px;
     font-weight: bold;
     display: flex;
@@ -204,13 +205,23 @@ section {
       background-color: #009688;
       color: white; }
   .section-grader .final-grade {
+    display: flex;
     height: 112px;
     border-top: 1px solid #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 56px;
     color: #666; }
+    .section-grader .final-grade .final-grade-2 {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #666; }
+    .section-grader .final-grade .final-grade-0 {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #009688; }
   .section-grader .digits {
     height: 112px;
     display: flex;

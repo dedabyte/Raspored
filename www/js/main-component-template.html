@@ -50,7 +50,10 @@
   <div class="clear-grades" ng-tap="$ctrl.clearGrades()">
     <i class="fa fa-trash-o"></i>
   </div>
-  <div class="final-grade" ng-bind="$ctrl.calculateFinalGrade()"></div>
+  <div class="final-grade">
+    <div class="final-grade-2" ng-bind="$ctrl.calculateFinalGrade(2)"></div>
+    <div class="final-grade-0" ng-bind="$ctrl.calculateFinalGrade(0)"></div>
+  </div>
   <div class="digits">
     <div class="digit" ng-tap="$ctrl.addGrade(1)">1</div>
     <div class="divider"></div>
