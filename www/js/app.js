@@ -29,41 +29,33 @@ define("model", ["require", "exports"], function (require, exports) {
         function Model() {
             this.schedule = [
                 [
-                    {},
-                    { group: 'M41', room: '11' },
-                    { group: 'M23', room: '10' }
+                    { group: 'M21', room: '6' },
+                    { group: 'M21', room: '6' }
                 ],
                 [
-                    {},
-                    {},
-                    {},
-                    { group: 'B', room: '' },
-                    { group: 'M11', room: '7' },
-                    { group: 'E11', room: '9' },
-                    { group: 'E11', room: '9' }
+                    { group: 'M11', room: '6' },
+                    { group: 'M11', room: '6' },
+                    { group: 'E12', room: '3' },
+                    { group: 'M22', room: '7' }
                 ],
                 [
-                    { group: 'M41', room: '11' },
-                    { group: 'M41', room: '11' },
-                    { group: 'M23', room: '10' }
+                    { group: 'E21', room: '6' },
+                    { group: 'E21', room: '6' },
+                    { group: 'M21', room: '3' }
                 ],
                 [
-                    {},
-                    {},
-                    {},
-                    {},
-                    { group: 'E41', room: '16' },
-                    { group: 'M12', room: '5' },
-                    { group: 'M12', room: '5' }
+                    { group: 'E21', room: '6' },
+                    { group: 'E41', room: '6' },
+                    { group: 'E41', room: '6' },
                 ],
                 [
-                    { group: 'M11', room: '9' },
-                    { group: 'M11', room: '9' },
-                    { group: 'M12', room: '9' },
-                    { group: 'E11', room: '2' },
-                    {},
-                    { group: 'E41', room: '16' },
-                    { group: 'E41', room: '16' }
+                    { group: 'M11', room: '5' },
+                    { group: 'E12', room: '2' },
+                    { group: 'E12', room: '2' },
+                    { group: 'M22', room: '6' },
+                    { group: 'M22', room: '6' },
+                    { group: 'ČOS', room: '3' },
+                    { group: 'E41', room: '6' }
                 ]
             ];
             this.classTimes = {
