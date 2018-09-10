@@ -41,7 +41,7 @@ define("model", ["require", "exports"], function (require, exports) {
                 [
                     { group: 'E21', room: '6' },
                     { group: 'E21', room: '6' },
-                    { group: 'M21', room: '3' }
+                    { group: 'M21', room: '6' }
                 ],
                 [
                     { group: 'E21', room: '6' },
@@ -54,7 +54,7 @@ define("model", ["require", "exports"], function (require, exports) {
                     { group: 'E12', room: '2' },
                     { group: 'M22', room: '6' },
                     { group: 'M22', room: '6' },
-                    { group: 'ČOS', room: '3' },
+                    { group: 'ČOS', room: '3/6' },
                     { group: 'E41', room: '6' }
                 ]
             ];

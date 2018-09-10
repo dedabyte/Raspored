@@ -37,33 +37,38 @@ export type Index = number | string;
 
 export class Model {
   schedule: Array<IScheduleDayModel> = [
+    // mon
     [
       {group: 'M21', room: '6'},
       {group: 'M21', room: '6'}
     ],
+    // tue
     [
       {group: 'M11', room: '6'},
       {group: 'M11', room: '6'},
       {group: 'E12', room: '3'},
       {group: 'M22', room: '7'}
     ],
+    // wed
     [
       {group: 'E21', room: '6'},
       {group: 'E21', room: '6'},
-      {group: 'M21', room: '3'}
+      {group: 'M21', room: '6'}
     ],
+    // thu
     [
       {group: 'E21', room: '6'},
       {group: 'E41', room: '6'},
       {group: 'E41', room: '6'},
     ],
+    // fri
     [
       {group: 'M11', room: '5'},
       {group: 'E12', room: '2'},
       {group: 'E12', room: '2'},
       {group: 'M22', room: '6'},
       {group: 'M22', room: '6'},
-      {group: 'ČOS', room: '3'},
+      {group: 'ČOS', room: '3/6'},
       {group: 'E41', room: '6'}
     ]
   ];
